@@ -1,4 +1,4 @@
-const { signToken } = require("../helpers/jwt");
+const { signToken } = require("../helpers/jwt")
 const { User } = require("../models");
 const bcryptjs = require("bcryptjs");
 const { OAuth2Client } = require("google-auth-library");
