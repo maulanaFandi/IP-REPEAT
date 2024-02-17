@@ -1,6 +1,6 @@
 "use strict";
 const { hashSync } = require('bcryptjs');
-const data = require('../data/user.json');
+const data = require('../user.json');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
