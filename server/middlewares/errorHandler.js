@@ -14,7 +14,7 @@ const errHandle = (err, req, res, next) => {
         res.status(401).json({ message: "Wrong Email/Password" });
         break;
       case "NotFound":
-        res.status(400).json({ message: "Data Not Found" });
+        res.status(404).json({ message: "Data Not Found" });
         break;
       case "Unauthorized":
       case "JsonWebTokenError":

@@ -1,6 +1,6 @@
 const { signToken } = require("../helpers/jwt")
 const { User } = require("../models");
-const bcryptjs = require("bcryptjs");
+const bcryptjs = require("../helpers/bcrypt");
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client();
 
@@ -22,6 +22,7 @@ class Controller {
       static async login(req, res, next) {
         try {
           const { email, password } = req.body;
+          console.log(password, "line 25 <<<<<<<<<");
           if (!email) {
             throw { name: "EmailEmpty" };
           }
@@ -34,7 +35,7 @@ class Controller {
             throw { name: "InvalidLogin" };
           }
     
-          const compared = bcryptjs.compareSync(password, user.password);
+          const compared = bcryptjs.validate(password, user.password);
           if (!compared) {
             throw { name: "InvalidLogin" };
           }
