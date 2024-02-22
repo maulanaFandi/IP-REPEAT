@@ -22,7 +22,6 @@ class Controller {
   static async login(req, res, next) {
     try {
       const { email, password } = req.body;
-      console.log(password, "line 25 <<<<<<<<<");
       if (!email) {
         throw { name: "EmailEmpty" };
       }
@@ -121,8 +120,8 @@ class Controller {
         }
       } else {
         const session = await stripe.checkout.sessions.create({
-          success_url: "https://animemina-8e789.web.app/success", //balikkan ke url client atau endpoint mengakses deatil
-          cancel_url: "https://animemina-8e789.web.app/fail", //balikkan ke url client atau endpoint mengakses detail
+          success_url: "https://animemina-8e789.web.app/payment/success", //balikkan ke url client atau endpoint mengakses deatil
+          cancel_url: "https://animemina-8e789.web.app/payment/fail", //balikkan ke url client atau endpoint mengakses detail
           line_items: [
             {
               price_data: {
@@ -148,7 +147,6 @@ class Controller {
           status: `${session.payment_status}`,
         });
 
-        // res.status(200).json({ session });
         res.status(200).json({ url: session.url }); //YANG DI RETURN CUKUP URL AJA, NANTI LANGSUNG DI PAKSA CLIENT KE URL PAKE WINDOW
       }
     } catch (error) {
