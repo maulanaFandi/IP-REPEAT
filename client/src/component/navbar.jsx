@@ -32,14 +32,16 @@ export default function Navbar() {
       elevation={0}
       sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}>
       <Toolbar sx={{ flexWrap: "wrap" }}>
-      <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-      <Link to={"/"}>
-          Animemina
-      </Link>
+        <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+          <Link to={"/"}>Animemina</Link>
         </Typography>
         <Box alignContent={"flex-end"}>
           <Button
-            sx={{ color: "white", flexWrap: "flex", justifyContent: "flex-end" }}
+            sx={{
+              color: "white",
+              flexWrap: "flex",
+              justifyContent: "flex-end",
+            }}
             onClick={() => {
               localStorage.clear();
               navigate("/login");
@@ -54,25 +56,24 @@ export default function Navbar() {
   );
 }
 
-
 <AppBar
-      position="fixed"
-      color="default"
-      elevation={0}
-      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}>
-      <Toolbar sx={{ flexWrap: "wrap" }}>
-      <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-      <Link to={"/"}>
-          Animemina
-      </Link>
-        </Typography>
-  <ListItemButton sx={{flexWrap: "flex", justifyContent:"flex-end"}} onClick={()=>{
-    localStorage.clear()
-    navigate("/login")
-  }}>
-    <ListSubheader component="div" inset>
-      Logout
-    </ListSubheader>
+  position="fixed"
+  color="default"
+  elevation={0}
+  sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}>
+  <Toolbar sx={{ flexWrap: "wrap" }}>
+    <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+      <Link to={"/"}>Animemina</Link>
+    </Typography>
+    <ListItemButton
+      sx={{ flexWrap: "flex", justifyContent: "flex-end" }}
+      onClick={() => {
+        localStorage.clear();
+        navigate("/login");
+      }}>
+      <ListSubheader component="div" inset>
+        Logout
+      </ListSubheader>
     </ListItemButton>
-      </Toolbar>
-    </AppBar>
+  </Toolbar>
+</AppBar>;

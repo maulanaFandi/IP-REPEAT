@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+// import axios from "../helpers/axios";
 import InfiniteScroll from "react-infinite-scroller";
 import {
   Grid,
@@ -24,7 +24,7 @@ export default function GetAnime() {
   const [hasMore, setHasMore] = useState(true);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
-  const base_url_api = import.meta.VITE_BASE_URL_API;
+  // const base_url_api = import.meta.VITE_BASE_URL_API;
 
   const fetchData = () => {
     axios
@@ -68,7 +68,9 @@ export default function GetAnime() {
           </IconButton>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <FormControl>
-            <InputLabel id="demo-simple-select-label">Type</InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ ml: 1, flex: 1 }}>
+            Type
+            </InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -145,7 +147,7 @@ export default function GetAnime() {
                       component="img"
                       display="flex"
                       height={"500px"}
-                      image={value.images.webp.large_image_url}
+                      image={value.images?.webp.large_image_url}
                     />
                     <CardContent
                       sx={{
