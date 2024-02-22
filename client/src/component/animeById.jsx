@@ -31,7 +31,7 @@ export default function AnimeId() {
       console.log(error);
     }
   };
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     getData();
