@@ -4,7 +4,8 @@ import Login from "./views/login";
 import LayOut from "./layout/layout";
 import HomePage from "./component/getAnime";
 import AnimeId from "./component/animeById";
-
+import FailedPay from "./views/paymentFail";
+import SuccessPay from "./views/paymentSucces";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -41,9 +42,19 @@ const router = createBrowserRouter([
               element: <AnimeId />,
             },
           ],
+        },
+        {
+          path: "/payment/success",
+          element: <SuccessPay />,
+          loader: () => {
+            const isPremium = localStorage.getItem("access_token") === "Premium";
+            return isPremium ? redirect("/anime/:id") : null;
+          },
+        },
+        {
+          path: "/payment/failed",
+          element: <FailedPay />,
         }
-
-
       ],
     },
   ]);
