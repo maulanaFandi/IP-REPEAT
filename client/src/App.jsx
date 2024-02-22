@@ -3,12 +3,10 @@ import router from "./routers.jsx";
 // import { store } from "./app/store.js";
 // import { Provider } from "react-redux";
 
-function App() {
+export default function App() {
   return (
     <>
         <RouterProvider router={router} />
     </>
   );
 }
-
-export default App;

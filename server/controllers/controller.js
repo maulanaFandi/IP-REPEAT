@@ -53,7 +53,7 @@ class Controller {
           console.log(req.body);
           const {payload} = await client.verifyIdToken({
             idToken: req.body.google_token,
-            audience: process.env.GOOGLE_CLIENT_ID
+            audience: "881421523009-8qqcua7j37f77qes05tf8aq3ijuuscer.apps.googleusercontent.com"
           })
     
           const [user, created] = await User.findOrCreate({
