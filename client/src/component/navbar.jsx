@@ -8,7 +8,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { styled, alpha } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
-import { Box, Button } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
@@ -25,21 +26,37 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const [search, setSearch] = React.useState("");
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   return (
     <AppBar
       position="sticky"
       color="default"
       elevation={0}
-      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}>
+      sx={{ 
+        borderBottom: (theme) => `1px solid ${theme.palette.divider}`, 
+        backgroundColor: "rgba(240, 240, 240, 0.9)" // 0.9 menunjukkan tingkat transparansi
+      }}
+    >
       <Toolbar sx={{ flexWrap: "wrap" }}>
-      <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-      <Link to={"/"}>
-          Animemina
-      </Link>
+        <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+          <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }} onClick={scrollToTop}>Animemina</Link>
         </Typography>
+
         <Box alignContent={"flex-end"}>
           <Button
-            sx={{ color: "white", flexWrap: "flex", justifyContent: "flex-end" }}
+            sx={{
+              color: "white",
+              flexWrap: "flex",
+              justifyContent: "flex-end",
+            }}
             onClick={() => {
               localStorage.clear();
               navigate("/login");
@@ -53,26 +70,3 @@ export default function Navbar() {
     </AppBar>
   );
 }
-
-
-<AppBar
-      position="fixed"
-      color="default"
-      elevation={0}
-      sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}>
-      <Toolbar sx={{ flexWrap: "wrap" }}>
-      <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-      <Link to={"/"}>
-          Animemina
-      </Link>
-        </Typography>
-  <ListItemButton sx={{flexWrap: "flex", justifyContent:"flex-end"}} onClick={()=>{
-    localStorage.clear()
-    navigate("/login")
-  }}>
-    <ListSubheader component="div" inset>
-      Logout
-    </ListSubheader>
-    </ListItemButton>
-      </Toolbar>
-    </AppBar>

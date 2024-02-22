@@ -7,7 +7,9 @@ const Controller = require("../controllers/controller");
 router.post("/register", Controller.register);
 router.post("/login", Controller.login);
 router.post("/google-login", Controller.googleLogin);
-// router.post("/payment", Controller.payment);
+router.post("/payment", Controller.processTransaction);
+router.post("/payment/upgrade", Controller.upgradeToPremium);
+
 
 router.use(auth);
 router.use(errHandle);

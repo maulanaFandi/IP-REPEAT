@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import ButtonBase from "@mui/material/ButtonBase";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import { CardMedia, CircularProgress } from "@mui/material";
 // import axios from "../helpers/axios";
 
 const Img = styled("img")({
@@ -31,7 +31,7 @@ export default function AnimeId() {
       console.log(error);
     }
   };
-  console.log(data);
+  // console.log(data);
 
   useEffect(() => {
     getData();
@@ -52,7 +52,19 @@ export default function AnimeId() {
       }}>
       <Grid container spacing={2}>
         <Grid item>
-          <Img alt="image" src={data.images.jpg.large_image_url} />
+          <CardMedia
+            sx={{
+              justifyContent: "center",
+              alignItems: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+            component="img"
+            display="flex"
+            height={"500px"}
+            image={data.images?.webp.large_image_url}
+          />
+          {/* <Img alt="image" src={data.images.jpg.large_image_url} /> */}
         </Grid>
         <Grid item xs={12} sm container>
           <Grid item xs container direction="column" spacing={2}>
