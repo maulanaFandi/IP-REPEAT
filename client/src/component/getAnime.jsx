@@ -161,7 +161,7 @@ export default function GetAnime() {
                 <Card sx={{ maxHeight: 200, minHeight: 200 }}>
                   <CardActionArea
                     component={Link}
-                    to={`/payment`}>
+                    to={`/payment/success`}>
                     <CardMedia
                       sx={{
                         justifyContent: "center",
