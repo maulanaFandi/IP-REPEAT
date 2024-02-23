@@ -10,7 +10,6 @@ router.post("/google-login", Controller.googleLogin);
 router.post("/payment", Controller.processTransaction);
 router.post("/payment/upgrade", Controller.upgradeToPremium);
 
-
 router.use(auth);
 router.use(errHandle);
 module.exports = router;
