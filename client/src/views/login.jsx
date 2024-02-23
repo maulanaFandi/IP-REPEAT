@@ -11,7 +11,11 @@ import Button from "@mui/material/Button";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import { ListSubheader } from "@mui/material";
+import { Grid, ListSubheader, ThemeProvider, createTheme } from "@mui/material";
+import Paper from "@mui/material/Paper";
+
+
+const defaultTheme = createTheme();
 
 export default function Login() {
   let navigate = useNavigate();
@@ -68,62 +72,82 @@ export default function Login() {
   }, []);
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}>
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form
-          component="form"
-          onSubmit={handleSubmit}
-          noValidate
-          sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            onChange={handleChange}
-            id="email"
-            label="Email Address"
-            name="email"
-            type="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            onChange={handleChange}
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}>
-            Sign In
-          </Button>
-          <Typography display={"flex"} justifyContent={"center"} alignContent={"center"}>
+    <ThemeProvider theme={defaultTheme}>
+      <Grid container component="main" sx={{ height: "100vh" }}>
+        <CssBaseline />
+        <Grid
+          item
+          xs={false}
+          sm={4}
+          md={7}
+          sx={{
+            backgroundImage:
+              "url(https://source.unsplash.com/random?wallpapers)",
+            backgroundRepeat: "no-repeat",
+            backgroundColor: (t) =>
+              t.palette.mode === "light"
+                ? t.palette.grey[50]
+                : t.palette.grey[900],
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}>
+            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 1 }}>
+              <TextField 
+              onChange={handleChange}
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                onChange={handleChange}
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}>
+                Sign In
+              </Button>
+              <Typography display={"flex"} justifyContent={"center"} alignContent={"center"}>
             OR
           </Typography>
           <div id="buttonDiv" className="mt-5"></div>
-        </form>
-      </Box>
-      <div className="flex justify-center items-center mt-6">
+              
+            </Box>
+            <div className="flex justify-center items-center mt-6">
         <ListSubheader
           target="_blank"
           className="
@@ -141,6 +165,11 @@ export default function Login() {
           </Button>
         </Link>
       </div>
-    </Container>
+          </Box>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
   );
 }
+
+
